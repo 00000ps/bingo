@@ -7,6 +7,8 @@
 *.log
 *.debug
 
+bingo
+
 
 # Test binary, built with `go test -c`
 *.test
@@ -15,7 +17,7 @@
 *.out
 
 # Dependency directories (remove the comment below to include it)
-# vendor/
-log/
-output/
-# release/
+./vendor/
+./log/
+./output/
+# ./release/
