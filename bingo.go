@@ -10,16 +10,16 @@ import (
 )
 
 var (
-	help = flag.Bool("h", false, "help")
-	debug = flag.Bool("debug", false, "debug mode")
+	help    = flag.Bool("h", false, "help")
+	debug   = flag.Bool("debug", false, "debug mode")
 	verbose = flag.Bool("v", false, "verbose")
 )
 
-func main(){
+func main() {
 	flag.Parse()
 	// flag.Usage = flag.Usage()
 
-	if *help{
+	if *help {
 		flag.Usage()
 		os.Exit(1)
 	}
@@ -32,12 +32,13 @@ func main(){
 
 	fmt.Println("bingo")
 	fmt.Println("this is a project of testing framework that design for server testing")
-	
+
 	e := gin.Default()
-	gin.SetMode(gin.ReleaseMode)
-	e.GET("/x", func(c *gin.Context){
+	gin.SetMode(gin.DebugMode)
+	e.GET("/x", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
-		"messgae":"success",
-	})})
-	e.Run()
+			"messgae": "success",
+		})
+	})
+	e.Run(":8888")
 }
