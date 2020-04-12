@@ -29,3 +29,11 @@ go env -w GOPROXY=https://goproxy.cn,direct
 git config --global user.name "John Doe"
 git config --global user.email johndoe@example.com
 ```
+
+## github
+```bash
+vim .git/config
+# url = https://github.com/00000ps/bingo.git
+# 修改为
+# url = username:password@https://github.com/00000ps/bingo.git
+```
