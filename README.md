@@ -35,5 +35,5 @@ git config --global user.email johndoe@example.com
 vim .git/config
 # url = https://github.com/00000ps/bingo.git
 # 修改为
-# url = username:password@https://github.com/00000ps/bingo.git
+# url = https://username:password@github.com/00000ps/bingo.git
 ```
