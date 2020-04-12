@@ -8,18 +8,6 @@ import (
 
 // Abs return the absolute value
 func Abs(v interface{}) interface{} {
-	// switch rv := reflect.ValueOf(v); v.(type) {
-	// case int, int8, int16, int32, int64:
-	// 	if i := rv.Int(); i < 0 {
-	// 		return i * -1
-	// 	}
-	// case float32, float64:
-	// 	if i := rv.Float(); i < 0 {
-	// 		return i * -1
-	// 	}
-	// }
-	// return v
-
 	switch v.(type) {
 	case int:
 		if i := v.(int); i < 0 {
