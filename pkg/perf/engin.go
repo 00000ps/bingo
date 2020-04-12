@@ -5,8 +5,8 @@ import (
 	"sync"
 	"time"
 
+	"bingo/pkg/log"
 	"bingo/pkg/utils"
-	"bingo/pkg/utils/log"
 )
 
 const (
@@ -217,7 +217,6 @@ func (e *Engin) launch() {
 
 		log.Seperator()
 		log.Debug("--------start limit: %+v------", e)
-		// hi.Send("zhujunhao", "--------limit: %+v------", e)
 
 		// e.debug()
 

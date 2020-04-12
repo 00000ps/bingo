@@ -45,8 +45,8 @@ func (r *Rect) IoU(a *Rect) float32 { return IoU(r, a) }
 
 // IoU means Intersection over Union of rectangle
 func IoU(a, b *Rect) float32 {
-	W := utils.Min(a.RT().X, b.RT().X) - utils.Max(a.LB().X, b.LB().X)
-	H := utils.Min(a.RT().Y, b.RT().Y) - utils.Max(a.LB().Y, b.LB().Y)
+	W := utils.Min(a.RT().X, b.RT().X).(int) - utils.Max(a.LB().X, b.LB().X).(int)
+	H := utils.Min(a.RT().Y, b.RT().Y).(int) - utils.Max(a.LB().Y, b.LB().Y).(int)
 	if W <= 0 || H <= 0 {
 		return 0
 	}
