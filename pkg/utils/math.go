@@ -67,19 +67,11 @@ func sorts(max bool, v ...interface{}) interface{} {
 	} else if l == 1 {
 		return v[0]
 	}
-	var s Slice = Slice{v}
-	// vs := reflect.ValueOf(v)
-	// switch vs.Kind() {
-	// case reflect.Array, reflect.Slice:
-	// 	if l = vs.Elem().Len(); l < 1 {
-	// 		return nil
-	// 	} else if l == 1 {
-	// 		return vs.Index(0)
-	// 	}
-	// 	for i := 0; i < l; i++ {
-	// 		s = append(s, vs.Index(i))
-	// 	}
-	// }
+
+	var s Slice
+	for _, vi := range v {
+		s = append(s, vi)
+	}
 
 	if !sort.IsSorted(s) {
 		sort.Sort(s)
@@ -91,7 +83,7 @@ func sorts(max bool, v ...interface{}) interface{} {
 }
 
 // Slice is an interface that can be sorting
-// note that all elements should be
+// note that all elements should be numerous
 type Slice []interface{}
 
 func (c Slice) Len() int           { return len(c) }
