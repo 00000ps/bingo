@@ -1,10 +1,11 @@
-package monitor
+package ps
 
 import (
+	"bingo/pkg/log"
+
 	"github.com/shirou/gopsutil/cpu"
 	"github.com/shirou/gopsutil/mem"
 	"github.com/shirou/gopsutil/process"
-	"bingo/pkg/log"
 )
 
 func Perform() {
@@ -31,4 +32,22 @@ func Perform() {
 		st, _ := p.Status()
 		log.Notice("%d id:%d name:%s cpu:%f mem:%s status:%s\n", i, id, name, pc, pm.String(), st)
 	}
+}
+
+func Process(name string) *process.Process {
+	list, _ := process.Pids()
+	for _, id := range list {
+		p, _ := process.NewProcess(id)
+		n, _ := p.Name()
+		if name == n {
+			return p
+		}
+	}
+	return nil
+}
+func ProcessByID(id int) *process.Process {
+	if p, e := process.NewProcess(int32(id)); e == nil {
+		return p
+	}
+	return nil
 }

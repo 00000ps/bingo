@@ -1,20 +1,84 @@
 package utils
 
 import (
+	"reflect"
 	"testing"
-
-	"github.com/stretchr/testify/assert"
 )
 
+func Test_Min(t *testing.T) {
+	type args struct {
+		v []interface{}
+	}
+	tests := []struct {
+		name string
+		args args
+		want interface{}
+	}{
+		{name: "", args: args{v: []interface{}{0, 0.1, 0, 1000.87896}}, want: 0},
+		{name: "", args: args{v: []interface{}{0, 0.1, 0, -1.0, -1, 1000.87896}}, want: -1.0},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Min(tt.args.v...); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Min() = %#v, want %#v", got, tt.want)
+			}
+		})
+	}
+}
+
+func Test_Max(t *testing.T) {
+	type args struct {
+		v []interface{}
+	}
+	tests := []struct {
+		name string
+		args args
+		want interface{}
+	}{
+		{name: "", args: args{v: []interface{}{0, 0.1, 0, 1000.87896}}, want: 1000.87896},
+		{name: "", args: args{v: []interface{}{0, 0.1, 0, -1.0, -1, 1000.87896}}, want: 1000.87896},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Max(tt.args.v...); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Max() = %v, want %v", got, tt.want)
+			}
+		})
+	}
+}
+
+func BenchmarkMax(b *testing.B) {
+	var n int
+	for i := 0; i < b.N; i++ {
+		n++
+		Max(0, 0.1, 0, -1.0, -1, 1000.87896)
+	}
+}
+
 func TestAbs(t *testing.T) {
-	assert.Equal(t, 0, Abs(0))
-	assert.Equal(t, 0.0, Abs(0.0))
-	assert.Equal(t, 1, Abs(-1))
-	assert.Equal(t, 1.1, Abs(-1.1))
-}
-func TestMin(t *testing.T) {
-	assert.EqualValues(t, -1, Min(0, 0.1, 0, -1.0, -1, 1000.87896))
-}
-func TestMax(t *testing.T) {
-	assert.EqualValues(t, 1000.87896, Max(0, 0.1, 0, -1, 1000.87896))
+	type args struct {
+		v interface{}
+	}
+	tests := []struct {
+		name string
+		args args
+		want interface{}
+	}{
+		// TODO: Add test cases.
+		// 	assert.Equal(t, 0, Abs(0))
+		// 	assert.Equal(t, 0.0, Abs(0.0))
+		// 	assert.Equal(t, 1, Abs(-1))
+		// 	assert.Equal(t, 1.1, Abs(-1.1))
+		{"", args{0}, 0},
+		{"", args{0.0}, 0.0},
+		{"", args{1}, 1},
+		{"", args{-1}, 1},
+	}
+	for _, tt := range tests {
+		t.Run(tt.name, func(t *testing.T) {
+			if got := Abs(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+				t.Errorf("Abs() = %v, want %v", got, tt.want)
+			}
+		})
+	}
 }

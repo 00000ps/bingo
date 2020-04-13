@@ -4,9 +4,11 @@ import (
 	"bytes"
 	"encoding/binary"
 	"fmt"
-	"github.com/axgle/mahonia"
 	"strconv"
 	"strings"
+
+	"github.com/axgle/mahonia"
+	"github.com/jinzhu/copier"
 )
 
 const (
@@ -119,6 +121,14 @@ func UTF82Unicode(text string) string {
 	textUnquoted := textQuoted[1 : len(textQuoted)-1]
 	return textUnquoted
 }
+
+// Copy copier库就能处理不同类型之间的赋值。除此之外，copier还能：
+// 调用同名方法为字段赋值；
+// 以源对象字段为参数调用目标对象的方法，从而为目标对象赋值（当然也可以做其它的任何事情）；
+// 将切片赋值给切片（可以是不同类型哦）；
+// 将结构体追加到切片中
+// https://darjun.github.io/2020/03/13/godailylib/copier/
+func Copy(from, to interface{}) { copier.Copy(&to, &from) }
 
 var ByteOrder = binary.LittleEndian
 

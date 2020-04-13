@@ -4,6 +4,8 @@ import (
 	"fmt"
 	"reflect"
 	"sort"
+
+	"github.com/Knetic/govaluate"
 )
 
 // Abs return the absolute value
@@ -90,4 +92,20 @@ func ConvertToFloat64(v interface{}) float64 {
 	default:
 		panic(fmt.Errorf("unsupported type %s to compare", vs.Kind().String()))
 	}
+}
+
+// Eval returns input calculating result
+func Eval(eval string, parameters map[string]interface{}) interface{} {
+	expr, _ := govaluate.NewEvaluableExpression(eval)
+	result, _ := expr.Evaluate(parameters)
+	return result
+
+	// math.Abs()
+
+	// expr, _ = govaluate.NewEvaluableExpression("(mem_used / total_mem) * 100")
+	// parameters = make(map[string]interface{})
+	// parameters["total_mem"] = 1024
+	// parameters["mem_used"] = 512
+	// result, _ = expr.Evaluate(parameters)
+	// fmt.Println(result)
 }

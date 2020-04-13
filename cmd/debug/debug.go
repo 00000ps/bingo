@@ -2,10 +2,13 @@ package main
 
 import (
 	"bingo/internal/app/server"
-	"bingo/pkg/monitor"
+	"bingo/pkg/ps"
+	"bingo/pkg/testing/gen"
 )
 
-func main(){
+func main() {
+	gen.GenTestCase("face_api", "add_user", 10002)
+
 	server.Serve()
-	monitor.Perform()
+	ps.Perform()
 }

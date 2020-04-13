@@ -5,8 +5,8 @@ import (
 	"sort"
 	"time"
 
+	"bingo/pkg/log"
 	"bingo/pkg/utils"
-	"bingo/pkg/utils/log"
 )
 
 type FnInfo struct {

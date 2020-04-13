@@ -5,13 +5,22 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Launch file",
+            "type": "go",
+            "request": "launch",
+            "mode": "auto",
+            "program": "/mnt/d/workspace/src/github.com/00000ps/bingo"
+        },
+        {
             "name": "Launch",
             "type": "go",
             "request": "launch",
             "mode": "auto",
-            "program": "${fileDirname}",
+            "program": "/mnt/d/workspace/src/github.com/00000ps/bingo/bingo.go",
             "env": {},
-            "args": []
+            "args": [
+                "-h"
+            ]
         }
     ]
 }
