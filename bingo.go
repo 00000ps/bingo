@@ -19,7 +19,7 @@ var (
 )
 
 type Config struct {
-	AppName string `json:"app_name"`
+	AppName string `json:"app_name,omitempty"`
 }
 
 func main() {

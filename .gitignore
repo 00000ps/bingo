@@ -14,6 +14,7 @@
 bingo
 
 # Dependency directories (remove the comment below to include it)
+.idea/
 ./vendor/
 ./log/
 ./output/

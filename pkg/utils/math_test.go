@@ -65,10 +65,6 @@ func TestAbs(t *testing.T) {
 		want interface{}
 	}{
 		// TODO: Add test cases.
-		// 	assert.Equal(t, 0, Abs(0))
-		// 	assert.Equal(t, 0.0, Abs(0.0))
-		// 	assert.Equal(t, 1, Abs(-1))
-		// 	assert.Equal(t, 1.1, Abs(-1.1))
 		{"", args{0}, 0},
 		{"", args{0.0}, 0.0},
 		{"", args{1}, 1},
