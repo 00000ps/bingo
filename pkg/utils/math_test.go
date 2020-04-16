@@ -3,6 +3,8 @@ package utils
 import (
 	"reflect"
 	"testing"
+
+	. "github.com/smartystreets/goconvey/convey"
 )
 
 func Test_Min(t *testing.T) {
@@ -56,6 +58,16 @@ func BenchmarkMax(b *testing.B) {
 }
 
 func TestAbs(t *testing.T) {
+	Convey("as", t, func() {
+		t.Log("dei")
+		t.Log(12211413)
+		t.Log(true)
+		t.Log("dqdwqdwqdwqd")
+		t.Log("dwddwdqwkdjqwidjei")
+		
+		So(Abs(-1), ShouldEqual, 1)
+	})
+
 	type args struct {
 		v interface{}
 	}
@@ -64,17 +76,18 @@ func TestAbs(t *testing.T) {
 		args args
 		want interface{}
 	}{
-		// TODO: Add test cases.
 		{"", args{0}, 0},
 		{"", args{0.0}, 0.0},
 		{"", args{1}, 1},
 		{"", args{-1}, 1},
 	}
 	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			if got := Abs(tt.args.v); !reflect.DeepEqual(got, tt.want) {
-				t.Errorf("Abs() = %v, want %v", got, tt.want)
-			}
-		})
+		Convey(tt.name, t, func() { So(Abs(tt.args.v), ShouldEqual, tt.want) })
+		// t.Run(tt.name, func(t *testing.T) {
+		// 	So(Abs(tt.args.v), ShouldEqual, tt.want)
+		// 	// if got := Abs(tt.args.v); !reflect.DeepEqual(got, tt.want) {
+		// 	// 	t.Errorf("Abs() = %v, want %v", got, tt.want)
+		// 	// }
+		// })
 	}
 }

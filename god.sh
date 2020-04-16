@@ -23,7 +23,6 @@ gitlibfile="./scripts/bash/git.sh"
 readonly gitlibfile
 [[ -f $gitlibfile ]] && source $gitlibfile
 
-
 step=0
 fstart=`date +%s`
 

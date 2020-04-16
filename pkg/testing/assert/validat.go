@@ -1,10 +1,10 @@
-package valid
+package assert
 
 import (
 	"fmt"
 	"time"
 
-	"gopkg.in/go-playground/validator.v10"
+	"github.com/go-playground/validator"
 )
 
 // https://darjun.github.io/2020/04/04/godailylib/validator/
@@ -60,7 +60,7 @@ type Example struct {
 	Password2 string    `validate:"eqfield=Password"`
 }
 
-func valid() {
+func Valid() {
 	validate := validator.New()
 
 	u1 := Example{Name: "lidajun", Age: 18}
